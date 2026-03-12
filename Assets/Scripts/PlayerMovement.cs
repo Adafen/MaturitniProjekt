@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
         // Flip the player sprite based on movement direction
         if (horizontalInput > 0.001f)
         {
-            transform.localScale = new Vector3(5, 5, 5); // Face right
+            transform.localScale = new Vector3(4, 4, 4); // Face right
         }
         else if (horizontalInput < -0.001f)
         {
-            transform.localScale = new Vector3(-5, 5, 5); // Face left
+            transform.localScale = new Vector3(-4, 4, 4); // Face left
         }
 
         // Update the animator parameters
