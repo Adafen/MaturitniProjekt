@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    
     private Rigidbody2D rb;
     private Animator animator;
-    private bool isGrounded;
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpSpeed = 5f;
+    private BoxCollider2D boxCollider;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpPower;
+    [SerializeField] private LayerMask groundLayer;
 
     void Start()
     {
         // Get the Rigidbody2D and Animator components attached to the player
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -20,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
             Jump();
         }
@@ -36,23 +40,24 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Update the animator parameters
+        animator.SetFloat("yVelocity", rb.linearVelocity.y);
         animator.SetBool("isRunning", horizontalInput != 0);
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrounded", isGrounded());
     }
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
-        animator.SetTrigger("jump");
-        isGrounded = false; // Set grounded to false when jumping
+        if (isGrounded())
+        {
+            rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+            animator.SetTrigger("jump");
+        }
+        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private bool isGrounded()
     {
-        // Check if the player is grounded by checking for collisions with the ground layer
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
 }
