@@ -1,53 +1,100 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
+using System.Collections.Generic;
 
 public class TerrainModifier : MonoBehaviour
 {
-    [Header("Building settings")]
+    [Header("Building Settings")]
     [SerializeField] private Tilemap playerTilemap;
     [SerializeField] private TileBase blockToBuild;
 
+    [Header("Inventory and UI")]
+    [SerializeField] private int blocksLeft = 3;
+    [SerializeField] private TextMeshProUGUI inventoryText;
+
     private Camera mainCamera;
-    // Start is called before the first frame update
+    private bool isBuildModeActive = false;
+
+    // Track which blocks were placed by the player to manage inventory correctly
+    private HashSet<Vector3Int> playerPlacedBlocks = new HashSet<Vector3Int>();
+
     void Start()
     {
-        // Get the main camera reference
         mainCamera = Camera.main;
+        UpdateUI();
     }
-    // Update is called once per frame
+
     void Update()
     {
-        // Check for left mouse button click to build and right mouse button click to destroy
+        // Toggle build mode with the B key
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            isBuildModeActive = !isBuildModeActive;
+            UpdateUI();
+        }
+
+        if (!isBuildModeActive) return;
+
+        // Handle left-click for building and right-click for removing
         if (Input.GetMouseButtonDown(0))
         {
             ModifyTerrain(true);
         }
-
-        // Check for right mouse button click to destroy
-        if (Input.GetMouseButtonDown(1))
+        else if (Input.GetMouseButtonDown(1))
         {
             ModifyTerrain(false);
         }
     }
-    // Method to modify the terrain based on the mouse position and action (build or destroy)
+
     private void ModifyTerrain(bool isBuilding)
     {
-        // Get the mouse position in screen coordinates
-        Vector3 mouseScreenPosition = Input.mousePosition;
-        // Convert the mouse position to world coordinates
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
-        // Set the z-coordinate to 0 to ensure we are working in the 2D plane
-        mouseWorldPosition.z = 0;
-        // Get the cell position in the tilemap based on the mouse world position
-        Vector3Int cellPosition = playerTilemap.WorldToCell(mouseWorldPosition);
-        // Modify the tile at the cell position based on the action (build or destroy)
+        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0;
+        Vector3Int cellPos = playerTilemap.WorldToCell(mouseWorldPos);
+
         if (isBuilding)
         {
-            playerTilemap.SetTile(cellPosition, blockToBuild);
+            // Logic for placing tiles
+            if (blocksLeft > 0 && !playerTilemap.HasTile(cellPos))
+            {
+                playerTilemap.SetTile(cellPos, blockToBuild);
+                blocksLeft--;
+
+                // Track that the player placed this block
+                playerPlacedBlocks.Add(cellPos);
+
+                UpdateUI();
+            }
         }
         else
         {
-            playerTilemap.SetTile(cellPosition, null);
+            // Logic for removing tiles
+            if (playerTilemap.HasTile(cellPos))
+            {
+                bool didPlayerPlaceIt = playerPlacedBlocks.Contains(cellPos);
+
+                // Remove the tile
+                playerTilemap.SetTile(cellPos, null);
+
+                // If the player placed this block, return it to their inventory
+                if (didPlayerPlaceIt)
+                {
+                    blocksLeft++;
+                    playerPlacedBlocks.Remove(cellPos);
+                }
+
+                UpdateUI();
+            }
+        }
+    }
+
+    private void UpdateUI()
+    {
+        if (inventoryText != null)
+        {
+            string modeStatus = isBuildModeActive ? "<color=green>ON</color>" : "<color=red>OFF</color>";
+            inventoryText.text = $"Build Mode: {modeStatus}\nBlocks Left: {blocksLeft}";
         }
     }
 }
