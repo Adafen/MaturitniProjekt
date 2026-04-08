@@ -2479,6 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12367886}
   - component: {fileID: 12367887}
+  - component: {fileID: 12367888}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2514,6 +2515,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   timerText: {fileID: 1959260752}
+--- !u!114 &12367888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12367885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccb39516ba46df48b83dee3ab28991f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainModifier
+  playerTilemap: {fileID: 723345507}
+  blockToBuild: {fileID: 11400000, guid: 2e12dd0d7cd28cb419b34321d8d0e2e8, type: 2}
+  blocksLeft: 3
+  inventoryText: {fileID: 1971780381}
 --- !u!1 &94257945
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,54 +3365,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 652536555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &329273653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 329273654}
-  - component: {fileID: 329273655}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &329273654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329273653}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 652536555}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &329273655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329273653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccb39516ba46df48b83dee3ab28991f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TerrainModifier
-  playerTilemap: {fileID: 258424081}
-  blockToBuild: {fileID: 11400000, guid: d2b5f7a39c014df448ed451d8f92991c, type: 2}
-  blocksLeft: 3
-  inventoryText: {fileID: 0}
 --- !u!1 &330261497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,7 +4274,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 258424086}
-  - {fileID: 329273654}
   m_Father: {fileID: 157856070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &652536556
@@ -4363,7 +4331,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 723345510}
-  - {fileID: 1026069205}
   m_Father: {fileID: 1491331980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &723345506
@@ -4927,54 +4894,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1026069204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1026069205}
-  - component: {fileID: 1026069206}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1026069205
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026069204}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 656027237}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1026069206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026069204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccb39516ba46df48b83dee3ab28991f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TerrainModifier
-  playerTilemap: {fileID: 723345507}
-  blockToBuild: {fileID: 11400000, guid: d2b5f7a39c014df448ed451d8f92991c, type: 2}
-  blocksLeft: 3
-  inventoryText: {fileID: 1971780381}
 --- !u!1 &1150647979
 GameObject:
   m_ObjectHideFlags: 0
