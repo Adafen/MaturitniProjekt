@@ -8,13 +8,19 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private AudioMixer mainMixer;
+    [SerializeField] private Slider volumeSlider;
     // This method is called when the "Play" button is clicked in the main menu
     private void Start()
     {
         // Ensure only the main menu is visible when the game starts
         ShowMainMenu();
         // Load the saved volume setting
-        float savedVolume = PlayerPrefs.GetFloat("SavedVolume", 1.0f);
+        float savedVolume = PlayerPrefs.GetFloat("SavedVolume", 0.75f);
+        if (volumeSlider != null)
+        {
+            volumeSlider.value = savedVolume;
+        }
+
         SetMusicVolume(savedVolume);
     }
     public void PlayGame()

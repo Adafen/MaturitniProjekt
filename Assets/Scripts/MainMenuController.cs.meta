@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: f373195f969b9c340bd24a52a7581806
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mainMenuPanel: {instanceID: 0}
+  - settingsPanel: {instanceID: 0}
+  - mainMixer: {instanceID: 0}
+  - volumeSlider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
