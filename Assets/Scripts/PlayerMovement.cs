@@ -21,10 +21,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        if (Time.timeScale == 0f) return;
+        // Get horizontal input
+        float horizontalInput = 0f;
+
+        // Check for left and right movement input
+        if (Input.GetKey(InputManager.MoveLeft))
+        {
+            horizontalInput = -1f;
+        }
+        else if (Input.GetKey(InputManager.MoveRight))
+        {
+            horizontalInput = 1f;
+        }
+
+        // Apply movement
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
 
-        if (Input.GetButtonDown("Jump"))
+        // Check for jump input
+        if (Input.GetKeyDown(InputManager.Jump))
         {
             Jump();
         }
@@ -44,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", horizontalInput != 0);
         animator.SetBool("isGrounded", isGrounded());
     }
-
     private void Jump()
     {
         if (isGrounded())
@@ -54,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-
+    // This method checks if the player is currently grounded by performing a BoxCast downwards from the player's position
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayer);

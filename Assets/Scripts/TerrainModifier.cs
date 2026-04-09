@@ -27,8 +27,9 @@ public class TerrainModifier : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         // Toggle build mode with the B key
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(InputManager.BuildMode))
         {
             isBuildModeActive = !isBuildModeActive;
             UpdateUI();
