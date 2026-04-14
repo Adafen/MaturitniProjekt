@@ -5,11 +5,9 @@ using System.Collections.Generic;
 
 public class TerrainModifier : MonoBehaviour
 {
-    [Header("Building Settings")]
     [SerializeField] private Tilemap playerTilemap;
     [SerializeField] private TileBase blockToBuild;
 
-    [Header("Inventory and UI")]
     [SerializeField] private int blocksLeft = 3;
     [SerializeField] private TextMeshProUGUI inventoryText;
 
@@ -56,13 +54,17 @@ public class TerrainModifier : MonoBehaviour
 
         if (isBuilding)
         {
-            // Logic for placing tiles
-            if (blocksLeft > 0 && !playerTilemap.HasTile(cellPos))
+            // Check if the cell is empty and if the player has blocks left
+            bool isCellEmpty = !playerTilemap.HasTile(cellPos);
+            Vector2 cellWorldPos = playerTilemap.GetCellCenterWorld(cellPos);
+            Collider2D playerOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Player"));
+
+            // Only allow building if the cell is empty, the player has blocks left, and the player isn't standing in the way
+            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null)
             {
                 playerTilemap.SetTile(cellPos, blockToBuild);
                 blocksLeft--;
 
-                // Track that the player placed this block
                 playerPlacedBlocks.Add(cellPos);
 
                 UpdateUI();
@@ -77,7 +79,6 @@ public class TerrainModifier : MonoBehaviour
 
                 // Remove the tile
                 playerTilemap.SetTile(cellPos, null);
-
                 // If the player placed this block, return it to their inventory
                 if (didPlayerPlaceIt)
                 {
@@ -94,7 +95,7 @@ public class TerrainModifier : MonoBehaviour
     {
         if (inventoryText != null)
         {
-            string modeStatus = isBuildModeActive ? "<color=green>ON</color>" : "<color=red>OFF</color>";
+            string modeStatus = isBuildModeActive ? "ON" : "OFF";
             inventoryText.text = $"Build Mode: {modeStatus}\nBlocks Left: {blocksLeft}";
         }
     }

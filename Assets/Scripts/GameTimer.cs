@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
-public class NewMonoBehaviourScript : MonoBehaviour
+public class GameTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
 
-    private float elapsedTime;
+    public float elapsedTime;
     private bool isTimerRunning = true;
 
     // Update is called once per frame
