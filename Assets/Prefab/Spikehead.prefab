@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3916391206951116010}
   - component: {fileID: 497846388008318452}
   - component: {fileID: 962367336049914163}
-  - component: {fileID: 846519531685083217}
+  - component: {fileID: 5310266069884128761}
   m_Layer: 0
   m_Name: Spikehead
   m_TagString: Untagged
@@ -166,7 +166,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &846519531685083217
+--- !u!114 &5310266069884128761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,9 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c875fa60068ff54ba60b2d76c55b653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 7
+  speed: 8
   range: 20
-  checkDelay: 1
+  checkDelay: 0.25
   playerLayer:
     serializedVersion: 2
     m_Bits: 8

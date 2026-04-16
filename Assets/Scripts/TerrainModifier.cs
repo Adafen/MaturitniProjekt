@@ -58,9 +58,10 @@ public class TerrainModifier : MonoBehaviour
             bool isCellEmpty = !playerTilemap.HasTile(cellPos);
             Vector2 cellWorldPos = playerTilemap.GetCellCenterWorld(cellPos);
             Collider2D playerOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Player"));
+            Collider2D enemyOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Enemy"));
 
             // Only allow building if the cell is empty, the player has blocks left, and the player isn't standing in the way
-            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null)
+            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null)
             {
                 playerTilemap.SetTile(cellPos, blockToBuild);
                 blocksLeft--;

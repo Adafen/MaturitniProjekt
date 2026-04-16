@@ -7118,13 +7118,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1491331980}
     m_Modifications:
+    - target: {fileID: 846519531685083217, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 846519531685083217, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
+      propertyPath: checkDelay
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5857667887580057767, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: -4.94
       objectReference: {fileID: 0}
     - target: {fileID: 5857667887580057767, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.89
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 5857667887580057767, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7161,6 +7169,14 @@ PrefabInstance:
     - target: {fileID: 7064145625953609619, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
       propertyPath: m_Name
       value: Spikehead
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064145625953609619, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064145625953609619, guid: 377c8622af5b59c43bac98fcc610e13a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
