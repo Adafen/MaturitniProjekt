@@ -1,31 +1,29 @@
-using TMPro.Examples;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private Transform previousRoom;
-    [SerializeField] private Transform nextRoom;
-    [SerializeField] private CameraController cam;
+    [SerializeField] private GameObject doorVisual;
+    [SerializeField] private TilemapCollider2D tilemapCollider;
+    [SerializeField] private BoxCollider2D box2DCollider;
 
-
-    private void OnTriggerExit2D(Collider2D collision)
+    // Method to open the door
+    public void OpenDoor()
     {
-        // Check if the player is exiting the door
-        if (collision.CompareTag("Player"))
-        {
-            // Determine which room the player is now in based on their position relative to the door
-            if (collision.transform.position.x > transform.position.x)
-            {
-                // Player is moving to the next room
-                cam.MoveToRoom(nextRoom);
-            }
-            else
-            {
-                // Player is moving back to the previous room
-                cam.MoveToRoom(previousRoom);
-            }
-        }
+        doorVisual.SetActive(false);
+        if (tilemapCollider != null)
+            tilemapCollider.enabled = false;
+        if ( box2DCollider != null)
+            box2DCollider.enabled = false;
     }
 
+    // Method to close the door
+    public void CloseDoor()
+    {
+        doorVisual.SetActive(true);
+        if (tilemapCollider != null)
+            tilemapCollider.enabled = true;
+        if (box2DCollider != null)
+            box2DCollider.enabled = true;
+    }
 }

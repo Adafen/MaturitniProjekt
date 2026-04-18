@@ -7,12 +7,14 @@ public class TerrainModifier : MonoBehaviour
 {
     [SerializeField] private Tilemap playerTilemap;
     [SerializeField] private TileBase blockToBuild;
+    [SerializeField] private float placementDelay = 1.0f;
 
     [SerializeField] private int blocksLeft = 3;
     [SerializeField] private TextMeshProUGUI inventoryText;
 
     private Camera mainCamera;
     private bool isBuildModeActive = false;
+    private float lastDeleteTime = -100f;
 
     // Track which blocks were placed by the player to manage inventory correctly
     private HashSet<Vector3Int> playerPlacedBlocks = new HashSet<Vector3Int>();
@@ -38,7 +40,10 @@ public class TerrainModifier : MonoBehaviour
         // Handle left-click for building and right-click for removing
         if (Input.GetMouseButtonDown(0))
         {
-            ModifyTerrain(true);
+            if (Time.time >= lastDeleteTime + placementDelay)
+            {
+                ModifyTerrain(true);
+            }
         }
         else if (Input.GetMouseButtonDown(1))
         {
@@ -59,9 +64,11 @@ public class TerrainModifier : MonoBehaviour
             Vector2 cellWorldPos = playerTilemap.GetCellCenterWorld(cellPos);
             Collider2D playerOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Player"));
             Collider2D enemyOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Enemy"));
+            Collider2D groundOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Ground"));
+            Collider2D wallOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Wall"));
 
             // Only allow building if the cell is empty, the player has blocks left, and the player isn't standing in the way
-            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null)
+            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null && groundOverlap == null && wallOverlap == null)
             {
                 playerTilemap.SetTile(cellPos, blockToBuild);
                 blocksLeft--;
@@ -85,6 +92,7 @@ public class TerrainModifier : MonoBehaviour
                 {
                     blocksLeft++;
                     playerPlacedBlocks.Remove(cellPos);
+                    lastDeleteTime = Time.time;
                 }
 
                 UpdateUI();
