@@ -67,7 +67,7 @@ public class TerrainModifier : MonoBehaviour
             Collider2D groundOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Ground"));
             Collider2D wallOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Wall"));
 
-            // Only allow building if the cell is empty, the player has blocks left, and the player isn't standing in the way
+            // Check if the player has blocks left and the cell is empty, and there are no overlaps with important layers
             if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null && groundOverlap == null && wallOverlap == null)
             {
                 playerTilemap.SetTile(cellPos, blockToBuild);

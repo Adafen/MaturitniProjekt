@@ -8,6 +8,7 @@ public class Enemy : Death
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask wallLayer;
 
+    private Animator animator;
     private float checkTimer;
     private Vector3 destination;
 
@@ -18,6 +19,7 @@ public class Enemy : Death
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
     private void Update()
@@ -53,21 +55,18 @@ public class Enemy : Death
                 // Check if the hit object is the player and if the enemy is not already attacking
                 if (((1 << hit.collider.gameObject.layer) & playerLayer) != 0 && !isAttacking)
                 {
+                    if (animator != null)
+                    {
+                        animator.SetBool("isAttacking", true);
+                    }
                     isAttacking = true;
                     destination = directions[i];
                     checkTimer = 0f;
                 }
-                else
-                {
-                    Debug.DrawRay(transform.position, directions[i] * hit.distance, Color.blue);
-                }
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, directions[i] * range, Color.red);
             }
         }
     }
+
     private void CheckForWalls()
     {
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0f, destination, 0.1f, wallLayer);
@@ -75,6 +74,11 @@ public class Enemy : Death
         if (hit.collider != null)
         {
             isAttacking = false;
+
+            if (animator != null)
+            {
+                animator.SetBool("isAttacking", false);
+            }
         }
     }
 

@@ -23,6 +23,11 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f; // Ensure time scale is reset before restarting
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
