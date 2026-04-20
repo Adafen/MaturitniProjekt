@@ -4288,6 +4288,7 @@ Transform:
   - {fileID: 1491331980}
   - {fileID: 1418632118}
   - {fileID: 12367886}
+  - {fileID: 656027237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &656027235
@@ -4333,7 +4334,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 723345510}
-  m_Father: {fileID: 1491331980}
+  m_Father: {fileID: 634593576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &723345506
 GameObject:
@@ -5906,7 +5907,7 @@ GameObject:
   - component: {fileID: 1441658195}
   - component: {fileID: 1441658194}
   - component: {fileID: 1441658200}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HazardTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6239,7 +6240,6 @@ Transform:
   m_Children:
   - {fileID: 1150647980}
   - {fileID: 1287900123}
-  - {fileID: 656027237}
   - {fileID: 94257946}
   - {fileID: 917876354}
   m_Father: {fileID: 634593576}

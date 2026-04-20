@@ -2169,8 +2169,8 @@ Tilemap:
   - first: {x: 8, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2418,14 +2418,14 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 220
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 499a3f1cdef8e8a41b6d17c165e30e1e, type: 2}
+  - m_RefCount: 219
     m_Data: {fileID: 11400000, guid: 578dabffefc274e4eaaf673f85e04368, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 220
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 248611cc7bb8d85448933cee393ce41e, type: 3}
+  - m_RefCount: 219
     m_Data: {fileID: 21300000, guid: 2538710101d0f1f4e8976b3495cd1f75, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 220
@@ -4441,6 +4441,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1491331980}
+  - {fileID: 656027237}
   - {fileID: 12367886}
   - {fileID: 431299737}
   m_Father: {fileID: 0}
@@ -4488,7 +4489,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 723345510}
-  m_Father: {fileID: 1491331980}
+  m_Father: {fileID: 634593576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &721273006
 GameObject:
@@ -5665,7 +5666,7 @@ GameObject:
   - component: {fileID: 1135325774}
   - component: {fileID: 1135325773}
   - component: {fileID: 1135325772}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HazardTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6595,7 +6596,6 @@ Transform:
   m_Children:
   - {fileID: 1150647980}
   - {fileID: 1287900123}
-  - {fileID: 656027237}
   - {fileID: 94257946}
   - {fileID: 917876354}
   - {fileID: 173082285}

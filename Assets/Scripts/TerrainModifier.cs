@@ -59,16 +59,17 @@ public class TerrainModifier : MonoBehaviour
 
         if (isBuilding)
         {
-            // Check if the cell is empty and if the player has blocks left
+            // Logic for placing tiles
             bool isCellEmpty = !playerTilemap.HasTile(cellPos);
+
             Vector2 cellWorldPos = playerTilemap.GetCellCenterWorld(cellPos);
             Collider2D playerOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Player"));
             Collider2D enemyOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Enemy"));
-            Collider2D groundOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Ground"));
             Collider2D wallOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Wall"));
+            Collider2D hazardOverlap = Physics2D.OverlapBox(cellWorldPos, new Vector2(0.8f, 0.8f), 0, LayerMask.GetMask("Hazard"));
 
             // Check if the player has blocks left and the cell is empty, and there are no overlaps with important layers
-            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null && groundOverlap == null && wallOverlap == null)
+            if (blocksLeft > 0 && isCellEmpty && playerOverlap == null && enemyOverlap == null && wallOverlap == null && hazardOverlap == null)
             {
                 playerTilemap.SetTile(cellPos, blockToBuild);
                 blocksLeft--;
