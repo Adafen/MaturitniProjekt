@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c875fa60068ff54ba60b2d76c55b653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 8
+  speed: 7
   range: 20
   checkDelay: 0.25
   playerLayer:
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_Bits: 8
   wallLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4288
 --- !u!95 &7056241876635810114
 Animator:
   serializedVersion: 7
