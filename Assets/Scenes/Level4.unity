@@ -2744,7 +2744,6 @@ GameObject:
   m_Component:
   - component: {fileID: 94257946}
   - component: {fileID: 94257948}
-  - component: {fileID: 94257947}
   - component: {fileID: 94257949}
   - component: {fileID: 94257950}
   m_Layer: 0
@@ -2769,21 +2768,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1491331980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &94257947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94257945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262af6c205b94554c98176d39021f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  previousRoom: {fileID: 1491331980}
-  nextRoom: {fileID: 0}
-  cam: {fileID: 0}
 --- !u!61 &94257948
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4469,10 +4453,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.34629294
+    x: 0.19947918
     y: 0
-    width: 0.6329114
-    height: 0.56537104
+    width: 0.36458334
+    height: 0.2962963
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34

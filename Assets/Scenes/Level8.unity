@@ -8213,10 +8213,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.34629294
+    x: 0.19947918
     y: 0
-    width: 0.6329114
-    height: 0.56537104
+    width: 0.36458334
+    height: 0.2962963
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -8614,7 +8614,6 @@ GameObject:
   m_Component:
   - component: {fileID: 930717653}
   - component: {fileID: 930717657}
-  - component: {fileID: 930717656}
   - component: {fileID: 930717655}
   - component: {fileID: 930717654}
   m_Layer: 7
@@ -8680,21 +8679,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &930717656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930717652}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262af6c205b94554c98176d39021f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  previousRoom: {fileID: 481455993}
-  nextRoom: {fileID: 0}
-  cam: {fileID: 837494419}
 --- !u!61 &930717657
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject timePanel;
     [SerializeField] private AudioMixer mainMixer;
     [SerializeField] private Slider volumeSlider;
     // This method is called when the "Play" button is clicked in the main menu
@@ -23,6 +24,13 @@ public class MainMenuController : MonoBehaviour
         }
 
         SetMusicVolume(savedVolume);
+    }
+
+    public void OpenTime()
+    {
+        // Shows the time panel and hides the main menu
+        mainMenuPanel.SetActive(false);
+        timePanel.SetActive(true);
     }
     public void OpenSettings()
     {

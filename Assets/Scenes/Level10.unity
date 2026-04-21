@@ -5750,7 +5750,6 @@ GameObject:
   m_Component:
   - component: {fileID: 501326303}
   - component: {fileID: 501326307}
-  - component: {fileID: 501326306}
   - component: {fileID: 501326305}
   - component: {fileID: 501326304}
   m_Layer: 7
@@ -5816,21 +5815,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &501326306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501326302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262af6c205b94554c98176d39021f7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  previousRoom: {fileID: 190197031}
-  nextRoom: {fileID: 0}
-  cam: {fileID: 1896185428}
 --- !u!61 &501326307
 BoxCollider2D:
   m_ObjectHideFlags: 0
