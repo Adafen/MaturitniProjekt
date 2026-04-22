@@ -7650,7 +7650,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 930717654}
         m_TargetAssemblyTypeName: FinishLine, Assembly-CSharp
         m_MethodName: LoadNextLevel
         m_Mode: 1
