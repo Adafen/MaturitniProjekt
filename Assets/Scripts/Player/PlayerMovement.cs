@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
-
     void Update()
     {
         if (Time.timeScale == 0f) return;
@@ -47,11 +46,11 @@ public class PlayerMovement : MonoBehaviour
         // Flip the player sprite based on movement direction
         if (horizontalInput > 0.001f)
         {
-            transform.localScale = new Vector3(4, 4, 4); // Face right
+            transform.localScale = new Vector2(4, 4); // Face right
         }
         else if (horizontalInput < -0.001f)
         {
-            transform.localScale = new Vector3(-4, 4, 4); // Face left
+            transform.localScale = new Vector2(-4, 4); // Face left
         }
 
         // Update the animator parameters
