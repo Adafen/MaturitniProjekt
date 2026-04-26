@@ -10133,6 +10133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Switch (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6622967089612644011, guid: 51dcead7208fecc47bbd8d355457b933, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8965038813996193163, guid: 51dcead7208fecc47bbd8d355457b933, type: 3}
       propertyPath: activationLayers.m_Bits
       value: 520
@@ -13203,6 +13207,10 @@ PrefabInstance:
     - target: {fileID: 6622967089612644011, guid: 51dcead7208fecc47bbd8d355457b933, type: 3}
       propertyPath: m_Name
       value: Switch (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622967089612644011, guid: 51dcead7208fecc47bbd8d355457b933, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8965038813996193163, guid: 51dcead7208fecc47bbd8d355457b933, type: 3}
       propertyPath: activationLayers.m_Bits
